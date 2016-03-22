@@ -42,8 +42,9 @@ body.album {
 }
 
 .album-view-song-item {
-    height: 3rem;
-    border-bottom: 1px solid rgba(255,255,255,0.5);    /* border-bottom, instead border-box. Remember the box model resource?? */
+    height: 3rem; 
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    /* border-bottom, instead border-box. Remember the box model resource?? */
 }
 
 .song-item-number {
