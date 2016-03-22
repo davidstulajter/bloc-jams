@@ -30,6 +30,21 @@ var albumMarconi = {
     ]
 };
 
+var albumAtoms = {
+    title: 'Atoms for Peace',
+    artist: 'Flea',
+    label: 'Garage',
+    year: '2013',
+    albumArtUrl: 'assets/images/album_covers/12.png',
+    songs: [
+        { title: 'Get a haircut', duration: '3:01' },
+        { title: 'Black rivers', duration: '8:08' },
+        { title: 'Burger tempest', duration: '4:25' },
+        { title: 'LCD soundsystem', duration: '5:16' },
+        { title: 'Panda Bear', duration: '3:35' }
+    ]
+};
+
 // function createSongRow generates song row content
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
@@ -42,17 +57,16 @@ var createSongRow = function(songNumber, songName, songLength) {
  
     return template;
 };
+// Selecting elements here that I want to populate dynamically
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
 
 // Creating function setCurrentAlbum that the program calls when window loads
 var setCurrentAlbum = function(album) {
-    // Selecting elements here that I want to populate dynamically
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -66,9 +80,17 @@ var setCurrentAlbum = function(album) {
 };
  
 window.onload = function() {
-    setCurrentAlbum(albumMarconi);
+    setCurrentAlbum(albumPicasso);
+    var toggleAlbums = [albumAtoms, albumMarconi, albumPicasso]
+    var i = 0;
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(toggleAlbums[i]);
+        i++;
+        if (i == toggleAlbums.length) {
+            i = 0;
+        }
+    });
 };
-
 
 
 
