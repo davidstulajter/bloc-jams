@@ -94,7 +94,7 @@ body.album {
 
 @media (max-width: 64rem) and (min-width: 20rem) {     /* adjusting song list to have spacing, so not to meet the edge of small devices */ 
     .album-view-song-list {
-        positon: relative;
+        position: relative;
         top: 1rem;
         width: 80%;
         margin: auto;
